@@ -31,5 +31,5 @@ void loop()
   {
     Serial.print(char(Serial2.read()));
   }
-  //delay(200);
+  delay(200);
 }
