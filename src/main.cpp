@@ -24,12 +24,13 @@ void setup()
 
 void loop()
 {
-  Serial2.print("######");
-  Serial2.write("hellowrite");
+  //Serial.println("another loop");
+  Serial2.print("0x01");
+  Serial2.write("ab");
   //Serial.print(Serial2.available());
   if (Serial2.available() > 0)
   {
     Serial.print(char(Serial2.read()));
   }
-  delay(200);
+  delay(1000);
 }

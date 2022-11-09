@@ -1,9 +1,19 @@
 {
 	"folders": [
 		{
-			"name": "loopbacktest",
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"*.tcc": "cpp",
+			"chrono": "cpp",
+			"optional": "cpp",
+			"algorithm": "cpp",
+			"limits": "cpp",
+			"streambuf": "cpp",
+			"thread": "cpp",
+			"regex": "cpp"
+		}
+	}
 }
