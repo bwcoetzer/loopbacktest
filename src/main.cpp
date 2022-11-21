@@ -16,7 +16,7 @@ void setup()
   Serial.println("Goodnight moon!");
 
   // Serial1.begin(9600, SERIAL_8N1, RXD2, TXD2);
-  Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
+  Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);
   Serial2.println("serial2test");
   Serial.println("Serial Txd is on pin: " + String(TX));
   Serial.println("Serial Rxd is on pin: " + String(RX));
@@ -24,7 +24,7 @@ void setup()
 
 void loop()
 {
-  //Serial.println("another loop");
+  Serial.println("another loop");
   Serial2.print("0x01");
   Serial2.write("ab");
   //Serial.print(Serial2.available());
