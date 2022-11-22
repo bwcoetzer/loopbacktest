@@ -3,6 +3,9 @@
 #define RXD2 16
 #define TXD2 17
 
+byte x;
+
+
 void setup()
 {
   // Note the format for setting a serial port is as follows: Serial2.begin(baud-rate, protocol, RX pin, TX pin);
@@ -16,7 +19,7 @@ void setup()
   Serial.println("Goodnight moon!");
 
   // Serial1.begin(9600, SERIAL_8N1, RXD2, TXD2);
-  Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);
+  Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
   Serial2.println("serial2test");
   Serial.println("Serial Txd is on pin: " + String(TX));
   Serial.println("Serial Rxd is on pin: " + String(RX));
@@ -24,13 +27,15 @@ void setup()
 
 void loop()
 {
-  Serial.println("another loop");
-  Serial2.print("0x01");
-  Serial2.write("ab");
+  //Serial.println("another loop");
+  //Serial2.print("0x01");
+  //Serial2.write("ab");
   //Serial.print(Serial2.available());
   if (Serial2.available() > 0)
   {
-    Serial.print(char(Serial2.read()));
+    x = Serial2.read();
+    if (x <= 0x0F) Serial.print("0");
+    Serial.print(x, HEX);
   }
-  delay(1000);
+  delay(500);
 }
