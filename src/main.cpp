@@ -4,6 +4,9 @@
 #define TXD2 17
 
 byte x;
+const byte message[] = {0x05, 0x04, 0x00, 0x49, 0x00, 0x01, 0xE1, 0x98};
+float millislast;
+float sendinterval = 2000;
 
 
 void setup()
@@ -21,21 +24,25 @@ void setup()
   // Serial1.begin(9600, SERIAL_8N1, RXD2, TXD2);
   Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
   Serial2.println("serial2test");
-  Serial.println("Serial Txd is on pin: " + String(TX));
-  Serial.println("Serial Rxd is on pin: " + String(RX));
+  millislast = millis();
 }
 
 void loop()
 {
   //Serial.println("another loop");
-  //Serial2.print("0x01");
-  //Serial2.write("ab");
+if ((millis()-millislast)>sendinterval) {
+  Serial2.write(message, sizeof message);
+  millislast = millis();
+  Serial.println("Message sent");
+}
+
+
   //Serial.print(Serial2.available());
-  if (Serial2.available() > 0)
+  while (Serial2.available() > 0)
   {
     x = Serial2.read();
     if (x <= 0x0F) Serial.print("0");
     Serial.print(x, HEX);
   }
-  delay(500);
+//delay(500);
 }
